@@ -1,13 +1,32 @@
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart'; // new
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';               // new
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';                 // new
 
-
+import 'app_state.dart';                                 // new
+import 'home_page.dart';
 
 void main()  {
-
+  WidgetsFlutterBinding.ensureInitialized();
+   Firebase.initializeApp();
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-    home: Scaffold(
+    home:myApp() ));
+
+}
+class myApp extends StatefulWidget {
+  const myApp({super.key});
+
+  @override
+  State<myApp> createState() => _myAppState();
+}
+
+class _myAppState extends State<myApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
         centerTitle: true,
@@ -86,6 +105,7 @@ void main()  {
           ],
         ),
       ),
-    )));
-
+    );
+  }
 }
+
